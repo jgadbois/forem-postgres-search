@@ -1,5 +1,10 @@
 <%= render :partial => 'forem/forums/head', :locals => { :forum => @forum } %>
 
+<%= form_tag search_forum_path(@forum), :method=>:get do %>
+  <%= text_field_tag :q, @search %>
+  <%= submit_tag "Search" %>
+<% end %>
+
 <% if @topics.num_pages > 1 %>
   <div class='pages'>
     <%= t('forem.common.pages') -%>: <%= forem_paginate @topics %>
